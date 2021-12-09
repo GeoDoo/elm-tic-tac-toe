@@ -1,0 +1,25 @@
+{
+  "name": "elm-tic-tac-toe",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeoDoo/elm-tic-tac-toe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GeoDoo/elm-tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/GeoDoo/elm-tic-tac-toe#readme",
+  "devDependencies": {
+    "@parcel/transformer-elm": "^2.0.1",
+    "elm": "^0.19.1-5",
+    "parcel": "^2.0.1"
+  }
+}

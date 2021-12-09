@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+.board {
+  width: 600px;
+  height: 600px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cell {
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  background: green;
+}
