@@ -51,7 +51,7 @@ update _ model =
 
 
 view : Model -> Html msg
-view model =
+view _ =
     div [ class "root" ]
         [ div [ class "board" ]
             [ div [ class "cell" ] []
