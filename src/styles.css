@@ -20,6 +20,8 @@
 }
 
 .cell {
+  width: 200px;
+  height: 200px;
   border: 1px solid black;
 }
 
@@ -31,5 +33,6 @@
   margin: 0;
   padding: 0;
   border: 0 none;
+  font-size: 120px;
 }
 
