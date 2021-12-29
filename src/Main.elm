@@ -41,8 +41,8 @@ type Msg
     = AddMark Int
 
 
-updateEntry : Int -> ( Int, String ) -> ( Int, String )
-updateEntry index tuple =
+updateMark : Int -> ( Int, String ) -> ( Int, String )
+updateMark index tuple =
     if index == Tuple.first tuple then
         ( index, "X" )
 
@@ -54,7 +54,7 @@ update : Msg -> Model -> Model
 update msg model =
     case msg of
         AddMark index ->
-            List.map (\x -> updateEntry index x) model
+            List.map (\x -> updateMark index x) model
 
 
 
