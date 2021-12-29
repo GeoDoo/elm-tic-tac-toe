@@ -4,7 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "parcel src/index.html"
+    "start": "parcel src/index.html",
+    "build": "./optimise.sh src/Main.elm"
   },
   "repository": {
     "type": "git",
