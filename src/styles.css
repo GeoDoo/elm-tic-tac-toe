@@ -2,6 +2,9 @@
   box-sizing: border-box;
 }
 
+.root {
+}
+
 .board {
   width: 600px;
   height: 600px;
@@ -10,7 +13,23 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+.ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0
+}
+
 .cell {
   border: 1px solid black;
-  background: green;
 }
+
+.button {
+  width: 100%;
+  height: 100%;
+  background: green;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+}
+
