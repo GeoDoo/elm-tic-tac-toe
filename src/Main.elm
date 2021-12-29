@@ -61,18 +61,13 @@ update msg model =
 -- VIEW
 
 
+displayCell : ( Int, String ) -> Html Msg
+displayCell tuple =
+    li [ class "cell" ] [ button [ class "button", onClick (AddMark (Tuple.first tuple)) ] [ text (Tuple.second tuple) ] ]
+
+
 view : Model -> Html Msg
 view model =
     div [ class "root" ]
-        [ ul [ class "board ul" ]
-            [ li [ class "cell" ] [ button [ class "button", onClick (AddMark 0) ] [ text "" ] ]
-            , li [ class "cell" ] [ button [ class "button", onClick (AddMark 1) ] [ text "" ] ]
-            , li [ class "cell" ] [ button [ class "button", onClick (AddMark 2) ] [ text "" ] ]
-            , li [ class "cell" ] [ button [ class "button", onClick (AddMark 3) ] [ text "" ] ]
-            , li [ class "cell" ] [ button [ class "button", onClick (AddMark 4) ] [ text "" ] ]
-            , li [ class "cell" ] [ button [ class "button", onClick (AddMark 5) ] [ text "" ] ]
-            , li [ class "cell" ] [ button [ class "button", onClick (AddMark 6) ] [ text "" ] ]
-            , li [ class "cell" ] [ button [ class "button", onClick (AddMark 7) ] [ text "" ] ]
-            , li [ class "cell" ] [ button [ class "button", onClick (AddMark 8) ] [ text "" ] ]
-            ]
+        [ ul [ class "board ul" ] (List.map displayCell model)
         ]
