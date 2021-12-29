@@ -23,11 +23,6 @@ type alias Model =
     List ( Int, String )
 
 
-type Mark
-    = X
-    | O
-
-
 init : Model
 init =
     List.indexedMap Tuple.pair [ "", "", "", "", "", "", "", "", "" ]
@@ -41,10 +36,10 @@ type Msg
     = AddMark Int
 
 
-updateMark : Int -> ( Int, String ) -> ( Int, String )
-updateMark index tuple =
+updateMark : Int -> ( Int, String ) -> String -> ( Int, String )
+updateMark index tuple mark =
     if index == Tuple.first tuple then
-        ( index, "X" )
+        ( index, mark )
 
     else
         tuple
@@ -54,7 +49,7 @@ update : Msg -> Model -> Model
 update msg model =
     case msg of
         AddMark index ->
-            List.map (\x -> updateMark index x) model
+            List.map (\tuple -> updateMark index tuple "X") model
 
 
 
