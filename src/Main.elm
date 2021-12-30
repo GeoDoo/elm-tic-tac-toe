@@ -38,7 +38,7 @@ type Msg
 
 updateMark : Int -> ( Int, String ) -> String -> ( Int, String )
 updateMark index tuple mark =
-    if index == Tuple.first tuple then
+    if index == Tuple.first tuple && Tuple.second tuple == "" then
         ( index, mark )
 
     else
@@ -47,7 +47,10 @@ updateMark index tuple mark =
 
 swap : Int -> Int -> String
 swap numOfX numOfO =
-    if numOfX <= numOfO then
+    if numOfX == 0 && numOfO == 0 then
+        "X"
+
+    else if numOfX <= numOfO then
         "X"
 
     else
