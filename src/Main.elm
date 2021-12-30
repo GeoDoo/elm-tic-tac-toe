@@ -45,11 +45,38 @@ updateMark index tuple mark =
         tuple
 
 
+swap : Int -> Int -> String
+swap numOfX numOfO =
+    if numOfX <= numOfO then
+        "X"
+
+    else
+        "O"
+
+
+isX : ( Int, String ) -> Bool
+isX tuple =
+    if Tuple.second tuple == "X" then
+        True
+
+    else
+        False
+
+
+isO : ( Int, String ) -> Bool
+isO tuple =
+    if Tuple.second tuple == "O" then
+        True
+
+    else
+        False
+
+
 update : Msg -> Model -> Model
 update msg model =
     case msg of
         AddMark index ->
-            List.map (\tuple -> updateMark index tuple "X") model
+            List.map (\tuple -> updateMark index tuple (swap (List.length (List.filter isX model)) (List.length (List.filter isO model)))) model
 
 
 
