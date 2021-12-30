@@ -34,6 +34,7 @@ init =
 
 type Msg
     = AddMark Int
+    | Restart
 
 
 updateMark : Int -> ( Int, String ) -> String -> ( Int, String )
@@ -81,6 +82,9 @@ update msg model =
         AddMark index ->
             List.map (\tuple -> updateMark index tuple (swap (List.length (List.filter isX model)) (List.length (List.filter isO model)))) model
 
+        Restart ->
+            init
+
 
 
 -- VIEW
@@ -114,7 +118,7 @@ winningCombination model =
             && List.member ( 5, "X" ) model
             && List.member ( 8, "X" ) model
     then
-        div [ class "overlay" ] [ p [] [ text "Player X wins!" ] ]
+        div [ class "overlay" ] [ p [] [ text "Player X wins!", p [ class "restart" ] [ button [ onClick Restart ] [ text "Play again?" ] ] ] ]
 
     else if
         List.member ( 0, "O" ) model
@@ -142,7 +146,7 @@ winningCombination model =
             && List.member ( 5, "O" ) model
             && List.member ( 8, "O" ) model
     then
-        div [ class "overlay" ] [ p [] [ text "Player O wins!" ] ]
+        div [ class "overlay" ] [ p [] [ text "Player O wins!", p [ class "restart" ] [ button [ onClick Restart ] [ text "Play again?" ] ] ] ]
 
     else
         text ""
