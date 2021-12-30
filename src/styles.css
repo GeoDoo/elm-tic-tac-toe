@@ -57,8 +57,13 @@ body {
   padding: 0;
   border: 0 none;
   font-size: 120px;
+  color: inherit;
 }
 
 .restart {
   text-align: center;
+}
+
+.O {
+  color: white;
 }

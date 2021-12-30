@@ -152,9 +152,18 @@ determineWinner model =
         text ""
 
 
+getClassForPlayer : String -> String
+getClassForPlayer mark =
+    if mark == "O" then
+        "cell O"
+
+    else
+        "cell"
+
+
 displayCell : ( Int, String ) -> Html Msg
 displayCell tuple =
-    li [ class "cell" ] [ button [ class "button", onClick (AddMark (Tuple.first tuple)) ] [ text (Tuple.second tuple) ] ]
+    li [ class (getClassForPlayer (Tuple.second tuple)) ] [ button [ class "button", onClick (AddMark (Tuple.first tuple)) ] [ text (Tuple.second tuple) ] ]
 
 
 view : Model -> Html Msg
