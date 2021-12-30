@@ -90,8 +90,8 @@ update msg model =
 -- VIEW
 
 
-winningCombination : Model -> Html Msg
-winningCombination model =
+determineWinner : Model -> Html Msg
+determineWinner model =
     if
         List.member ( 0, "X" ) model
             && List.member ( 1, "X" ) model
@@ -160,6 +160,6 @@ displayCell tuple =
 view : Model -> Html Msg
 view model =
     div [ class "root" ]
-        [ winningCombination model
+        [ determineWinner model
         , ul [ class "board ul" ] (List.map displayCell model)
         ]
