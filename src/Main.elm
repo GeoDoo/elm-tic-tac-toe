@@ -25,7 +25,7 @@ type alias Model =
 
 init : Model
 init =
-    List.indexedMap Tuple.pair [ "", "", "", "", "", "", "", "", "" ]
+    List.indexedMap Tuple.pair (List.repeat 9 "")
 
 
 
