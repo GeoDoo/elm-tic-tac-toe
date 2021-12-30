@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "parcel src/index.html",
+    "start": "rm -rf dist && parcel src/index.html",
     "build": "parcel build src/index.html",
     "prod:serve": "npm run build && serve dist"
   },
