@@ -117,7 +117,7 @@ winningCombination model =
         div [ class "overlay" ] [ p [] [ text "Player X wins!" ] ]
 
     else if
-        List.member ( 0, "X" ) model
+        List.member ( 0, "O" ) model
             && List.member ( 1, "O" ) model
             && List.member ( 2, "O" ) model
             || List.member ( 3, "O" ) model
