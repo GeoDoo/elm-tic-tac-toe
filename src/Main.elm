@@ -145,7 +145,7 @@ winningCombination model =
         div [ class "overlay" ] [ p [] [ text "Player O wins!" ] ]
 
     else
-        div [] []
+        text ""
 
 
 displayCell : ( Int, String ) -> Html Msg
