@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "./optimise.sh src/Main.elm"
+    "build": "parcel build src/index.html",
+    "prod:serve": "npm run build && serve dist"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@parcel/transformer-elm": "^2.0.1",
     "elm": "^0.19.1-5",
-    "parcel": "^2.0.1"
+    "parcel": "^2.0.1",
+    "serve": "^13.0.2"
   }
 }
