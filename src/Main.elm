@@ -1,7 +1,7 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, button, div, li, text, ul)
+import Html exposing (Html, button, div, li, p, text, ul)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 
@@ -86,6 +86,68 @@ update msg model =
 -- VIEW
 
 
+winningCombination : Model -> Html Msg
+winningCombination model =
+    if
+        List.member ( 0, "X" ) model
+            && List.member ( 1, "X" ) model
+            && List.member ( 2, "X" ) model
+            || List.member ( 3, "X" ) model
+            && List.member ( 4, "X" ) model
+            && List.member ( 5, "X" ) model
+            || List.member ( 6, "X" ) model
+            && List.member ( 7, "X" ) model
+            && List.member ( 8, "X" ) model
+            || List.member ( 0, "X" ) model
+            && List.member ( 4, "X" ) model
+            && List.member ( 8, "X" ) model
+            || List.member ( 2, "X" ) model
+            && List.member ( 4, "X" ) model
+            && List.member ( 6, "X" ) model
+            || List.member ( 0, "X" ) model
+            && List.member ( 3, "X" ) model
+            && List.member ( 6, "X" ) model
+            || List.member ( 1, "X" ) model
+            && List.member ( 4, "X" ) model
+            && List.member ( 7, "X" ) model
+            || List.member ( 2, "X" ) model
+            && List.member ( 5, "X" ) model
+            && List.member ( 8, "X" ) model
+    then
+        div [ class "overlay" ] [ p [] [ text "Player X wins!" ] ]
+
+    else if
+        List.member ( 0, "X" ) model
+            && List.member ( 1, "O" ) model
+            && List.member ( 2, "O" ) model
+            || List.member ( 3, "O" ) model
+            && List.member ( 4, "O" ) model
+            && List.member ( 5, "O" ) model
+            || List.member ( 6, "O" ) model
+            && List.member ( 7, "O" ) model
+            && List.member ( 8, "O" ) model
+            || List.member ( 0, "O" ) model
+            && List.member ( 4, "O" ) model
+            && List.member ( 8, "O" ) model
+            || List.member ( 2, "O" ) model
+            && List.member ( 4, "O" ) model
+            && List.member ( 6, "O" ) model
+            || List.member ( 0, "O" ) model
+            && List.member ( 3, "O" ) model
+            && List.member ( 6, "O" ) model
+            || List.member ( 1, "O" ) model
+            && List.member ( 4, "O" ) model
+            && List.member ( 7, "O" ) model
+            || List.member ( 2, "O" ) model
+            && List.member ( 5, "O" ) model
+            && List.member ( 8, "O" ) model
+    then
+        div [ class "overlay" ] [ p [] [ text "Player O wins!" ] ]
+
+    else
+        div [] []
+
+
 displayCell : ( Int, String ) -> Html Msg
 displayCell tuple =
     li [ class "cell" ] [ button [ class "button", onClick (AddMark (Tuple.first tuple)) ] [ text (Tuple.second tuple) ] ]
@@ -94,5 +156,6 @@ displayCell tuple =
 view : Model -> Html Msg
 view model =
     div [ class "root" ]
-        [ ul [ class "board ul" ] (List.map displayCell model)
+        [ winningCombination model
+        , ul [ class "board ul" ] (List.map displayCell model)
         ]
