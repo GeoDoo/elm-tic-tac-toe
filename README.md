@@ -3,4 +3,4 @@
 ### Tic-tac-toe
 I believe the game is known to almost everyone. The purpose is to make a triplet of X or O horizontally, vertically or diagonally.
 
-Enjoy!
+You can play it [live](https://condescending-ptolemy-2f5b28.netlify.app). Enjoy!
