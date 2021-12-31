@@ -2,6 +2,14 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
 html,
 body {
   margin: 0;
@@ -9,32 +17,37 @@ body {
 }
 
 .root {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
+  min-height: 100%;
 }
 
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.8);
   color: white;
   display: flex;
   align-content: center;
   justify-content: center;
   align-items: center;
-  font-size: 26px;
+  text-align: center;
 }
 
 .board {
-  width: 600px;
-  height: 600px;
-  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin: 0;
 }
 
 .ul {
@@ -43,8 +56,6 @@ body {
 }
 
 .cell {
-  width: 200px;
-  height: 200px;
   border: 1px solid black;
 }
 
@@ -56,14 +67,37 @@ body {
   margin: 0;
   padding: 0;
   border: 0 none;
-  font-size: 120px;
+  font-size: 10rem;
+  line-height: 1;
   color: inherit;
 }
 
 .restart {
-  text-align: center;
+  font-size: 6rem;
+}
+
+.restart button {
+  font-size: 2.5rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  outline: 0;
+  border: 0 none;
+  border-radius: 8px;
+  color: white;
+  background: green;
 }
 
 .O {
   color: white;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink 2s step-start 0s infinite;
+  color: orange;
 }
