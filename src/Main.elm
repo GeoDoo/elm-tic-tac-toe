@@ -148,8 +148,16 @@ determineWinner model =
     then
         div [ class "overlay" ] [ p [ class "restart" ] [ span [ class "blink" ] [ text "Player O wins!" ], p [] [ button [ onClick Restart ] [ text "Play again" ] ] ] ]
 
+    else if List.all isNotEmpty model == True then
+        div [ class "overlay" ] [ p [ class "restart" ] [ span [] [ text "This is a draw!" ], p [] [ button [ onClick Restart ] [ text "Play again" ] ] ] ]
+
     else
         text ""
+
+
+isNotEmpty : ( Int, String ) -> Bool
+isNotEmpty tuple =
+    not (String.isEmpty (Tuple.second tuple))
 
 
 getClassForPlayer : String -> String
