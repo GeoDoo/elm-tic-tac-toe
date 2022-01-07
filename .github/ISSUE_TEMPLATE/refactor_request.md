@@ -1,6 +1,6 @@
 ---
 name: Refactor request
-about: Create a report to help us improve
+about: Create a report to help us remove some tech debt or improve the implementation of some part of the code
 title: ''
 labels: refactor
 assignees: ''
