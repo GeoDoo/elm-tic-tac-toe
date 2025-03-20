@@ -90,67 +90,43 @@ update msg model =
 -- VIEW
 
 
-determineWinner : Model -> Html Msg
+determineWinner : List (Int, String) -> Html Msg
 determineWinner model =
-    if
-        List.member ( 0, "X" ) model
-            && List.member ( 1, "X" ) model
-            && List.member ( 2, "X" ) model
-            || List.member ( 3, "X" ) model
-            && List.member ( 4, "X" ) model
-            && List.member ( 5, "X" ) model
-            || List.member ( 6, "X" ) model
-            && List.member ( 7, "X" ) model
-            && List.member ( 8, "X" ) model
-            || List.member ( 0, "X" ) model
-            && List.member ( 4, "X" ) model
-            && List.member ( 8, "X" ) model
-            || List.member ( 2, "X" ) model
-            && List.member ( 4, "X" ) model
-            && List.member ( 6, "X" ) model
-            || List.member ( 0, "X" ) model
-            && List.member ( 3, "X" ) model
-            && List.member ( 6, "X" ) model
-            || List.member ( 1, "X" ) model
-            && List.member ( 4, "X" ) model
-            && List.member ( 7, "X" ) model
-            || List.member ( 2, "X" ) model
-            && List.member ( 5, "X" ) model
-            && List.member ( 8, "X" ) model
-    then
-        div [ class "overlay" ] [ p [ class "restart" ] [ span [ class "blink" ] [ text "Player X wins!" ], p [] [ button [ onClick Restart ] [ text "Play again" ] ] ] ]
-
-    else if
-        List.member ( 0, "O" ) model
-            && List.member ( 1, "O" ) model
-            && List.member ( 2, "O" ) model
-            || List.member ( 3, "O" ) model
-            && List.member ( 4, "O" ) model
-            && List.member ( 5, "O" ) model
-            || List.member ( 6, "O" ) model
-            && List.member ( 7, "O" ) model
-            && List.member ( 8, "O" ) model
-            || List.member ( 0, "O" ) model
-            && List.member ( 4, "O" ) model
-            && List.member ( 8, "O" ) model
-            || List.member ( 2, "O" ) model
-            && List.member ( 4, "O" ) model
-            && List.member ( 6, "O" ) model
-            || List.member ( 0, "O" ) model
-            && List.member ( 3, "O" ) model
-            && List.member ( 6, "O" ) model
-            || List.member ( 1, "O" ) model
-            && List.member ( 4, "O" ) model
-            && List.member ( 7, "O" ) model
-            || List.member ( 2, "O" ) model
-            && List.member ( 5, "O" ) model
-            && List.member ( 8, "O" ) model
-    then
-        div [ class "overlay" ] [ p [ class "restart" ] [ span [ class "blink" ] [ text "Player O wins!" ], p [] [ button [ onClick Restart ] [ text "Play again" ] ] ] ]
-
-    else if List.all isNotEmpty model == True then
-        div [ class "overlay" ] [ p [ class "restart" ] [ span [] [ text "This is a draw!" ], p [] [ button [ onClick Restart ] [ text "Play again" ] ] ] ]
-
+    let
+        winningCombos =
+            [ -- Rows
+              [0, 1, 2], [3, 4, 5], [6, 7, 8]
+              -- Columns
+            , [0, 3, 6], [1, 4, 7], [2, 5, 8]
+              -- Diagonals
+            , [0, 4, 8], [2, 4, 6]
+            ]
+            
+        hasWon player =
+            let
+                hasPosition pos = List.member (pos, player) model
+            in
+            List.any (\combo -> List.all hasPosition combo) winningCombos
+            
+        winnerMessage player =
+            div [ class "overlay" ] 
+                [ p [ class "restart" ] 
+                    [ span [ class "blink" ] [ text ("Player " ++ player ++ " wins!") ]
+                    , p [] [ button [ onClick Restart ] [ text "Play again" ] ]
+                    ]
+                ]
+    in
+    if hasWon "X" then
+        winnerMessage "X"
+    else if hasWon "O" then
+        winnerMessage "O"
+    else if List.all isNotEmpty model then
+        div [ class "overlay" ] 
+            [ p [ class "restart" ] 
+                [ span [] [ text "This is a draw!" ]
+                , p [] [ button [ onClick Restart ] [ text "Play again" ] ]
+                ]
+            ]
     else
         text ""
 
